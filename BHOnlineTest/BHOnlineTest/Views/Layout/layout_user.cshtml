@@ -1,0 +1,314 @@
+﻿
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Toan Huy" />
+        <title>@ViewBag.Title</title>
+        @*Chèn link css của free template download *@
+
+        <link href="~/Content/NguoiDungCssLayout/fonts.css" rel="stylesheet" />
+        <link href="~/Content/NguoiDungCssLayout/screen.css" rel="stylesheet" />
+        @*Chèn css thiết kế *@
+
+        <link href="~/Content/NguoiDungCssLayout/NguoiDungCssLayout.css" rel="stylesheet" />
+
+       
+
+        @*Chèn css font ký tự *@
+        <link href="~/Content/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        @*Chèn link nivo slider*@
+
+        <link href="~/NivoSlider/nivo-slider.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/NivoSlider/jquery.nivo.slider.js"></script>
+        <script src="~/NivoSlider/jquery.nivo.slider.pack.js"></script>
+      
+        </head>
+    <body>
+        <div id="ToanTrang">
+
+            <header>
+                @*xxây dựng thanh menu headrer icon *@
+                <div class="header-top">
+                    @*phần menu icon bên trái *@
+                    <div id="header-left" class="header-top">
+
+                        <a href="https://www.w3schools.com/html/html_links.asp"><span class="fa fa-facebook"></span></a>
+                        <a href="https://www.w3schools.com/html/html_links.asp"><span class="fa fa-twitter"></span></a>
+                        <a href="https://www.w3schools.com/html/html_links.asp"><span class="fa fa-pinterest"></span></a>
+                        <a href="https://www.w3schools.com/html/html_links.asp"><span class="fa fa-google-plus"></span></a>
+                        <a href="#"><span class="fa fa-phone"></span> <strong><span style="color: #ff0000;">098-908-9274</span></strong></a>
+                        <a href="#"><span class="fa fa-envelope-o"></span> bsh@gmail.com</a>
+                    </div>
+
+                    @*Tạo div đăng ký đăng nhập*@
+                    <div id ="header-right" class="header-top">
+                        @*@Html.Action("GioHangPartial","GioHang")*@
+                        <i class="fa fa-sign-in"> Đăng Kí</i>
+
+                        @*@Html.ActionLink("Đăng ký", "DangKy","NguoiDung", null, htmlAttributes: new { @class = "DangKy" })*@
+                        <i class="fa fa-unlock">@Html.ActionLink("Đăng nhập", "DangNhap", "User", null, htmlAttributes: new { @class = "DangNhap" })</i>
+                    </div>
+                </div>
+
+
+
+                @*phần mennu bên dưới thanh menu icon*@
+                <div class="header-mid">
+                    <div id="image" class="header-mid">
+                        <img alt="logo" src="https://bshc.com.vn/pic/advs/Logo-BSH__635629854656192897.png.ashx" style="width :120px; height:120px ">
+                    </div>
+
+                    @*Hộp thoại tìm kiếm*@
+                    <div id="txtTimKiem" class="header-mid">
+                 
+                        
+                              @using (Html.BeginForm("KetQuaTimKiem", "TimKiem", FormMethod.Post))
+{   <span>
+        @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "TextBoxTimKiem", @placeholder = "Nhập vào từ khóa cần tìm ..." })
+        @*Chèn vào image button hình ảnh*@
+
+        <button id ="btnsearch" type="submit"><img src="~/Image/imgSearch.png" /></button>
+    </span>
+
+
+}
+                   
+
+                    </div>
+                </div>
+               
+                @*Menu bên phải header*@
+              
+                    <nav class="Menu">
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("Index","Home")">TRANG CHỦ </a>
+                            </li>
+                            <li class="dropdown"> 
+                                <a href="#">SẢN PHẨM <span>&diams;</span></a>
+
+                                <ul class="dropdown-menu">
+                                   
+                                        <li><a href="#">Bảo hiểm tai nạn</a></li>
+                                        <li><a href="#">Bảo hiểm sức khỏe</a></li>
+                                        <li><a href="#">Bảo hiểm du lịch</a></li>
+                                        <li><a href="#">Bảo hiểm xe máy</a></li>
+                                        <li><a href="#">Bảo hiểm nhà tư nhân</a></li>
+                                        <li><a href="#">Bảo hiểm ô tô</a></li>
+                                        <li><a href="#">Bảo hiểm trách nhiệm</a></li>
+                                        <li><a href="#">Bảo hiểm kỹ thuật </a></li>
+                                        <li><a href="#">Bảo hiểm xe cơ giới</a></li>
+                                        <li><a href="#">Bảo hiểm con người</a></li>
+                                    </ul>
+                            </li>
+                                
+                            <li>
+                                <a href="#">TIN TỨC</a>
+                            </li>
+                            <li>
+                                <a href="#">CHÍNH SÁCH BỒI THƯỜNG</a>
+                            </li>
+                            <li>
+                                <a href="#">LIÊN HỆ</a>
+                            </li>
+
+
+                        </ul>
+                    </nav>
+
+               
+            </header>
+            <div style="clear:both"></div>
+
+           
+                <div class="Menu-slide">
+
+                    <div id="Menu-left" class="Menu-slide">
+                        @*Chèn vào partial view sách mới*@
+
+                        <ul>
+                            <b class="fa fa-dot-circle-o"> Bảo hiểm Cá Nhân</b> 
+                            <li>
+                                <a href="#">Bảo hiểm xe máy</a>
+                            </li>
+                            <li>
+                                <a href="#">Bảo hiểm tai nạn</a>
+                            <li>
+                                <a href="#">Bảo hiểm sức khỏe</a>
+                            </li>
+                            <li>
+                                <a href="#">Bảo hiểm nhà tư nhân</a>
+                            </li>
+                            <li>
+                                <a href="#">Bảo hiểm du lịch </a>
+                            </li>
+                            <li>
+                                <a href="#">Bảo hiểm ô tô  </a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <b class="fa fa-dot-circle-o"> Bảo hiểm Doanh Nghiệp </b> 
+                            <li>
+                                <a href="#">Bảo hiểm tài sản</a>
+                            </li>
+                            <li>
+                                <a href="#">Bảo hiểm kỹ thuật</a>
+                            </li>
+                            <li>
+                                <a href="#">Bảo hiểm tàu thủy</a>
+                            </li>
+                            <li>
+                                <a href="#">Bảo hiểm cơ giới</a>
+                            </li>
+                            <li>
+                                <a href="#">Bảo hiểm hàng hóa</a>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+
+
+                    <div id="slider" class="Menu-slide">
+
+                        <img src="~/Image/Silde-R_635690124124922587.png" />
+                        <img src="~/Image/Slide-1-0_635975429113082710.png" />
+
+                        <img src="~/Image/Slide-1-0_635975430145761776.png" />
+                        <img src="~/Image/Slide-1-0_635975430849182009.png" />
+                        <img src="~/Image/Slide-1-0_635975430983749706.png" />
+                        <img src="~/Image/Slide-1-0_635975431097386206.png" />
+                        <img src="~/Image/Slide-1-0_635979573875543746.png" />
+                    </div>
+
+                </div>
+        
+            <div style="clear:both"></div>
+            @*phần giữa trang*@
+           <main>
+              
+               <div class="body-left">
+                   <select name="sortby" style="height:35px; width:220px; margin-left:2%; border-radius:15px;" javascript:sort_by();" class="form-control sortby">
+                       <option value="" selected="selected">Sắp xếp theo mặc định</option>
+                       <option value="price_asc">Sắp xếp theo giá tăng dần</option>
+                       <option value="price_desc">Sắp xếp theo giá giảm dần</option>
+                   </select>
+                   <div class="sidebox sidefilter">
+
+                       <div class="filter filters">
+                           <p><strong>Tổng số: </strong>10 sản phẩm</p>
+                           <!--<p><strong>Kích cỡ: </strong><a onclick="filter_clear('size')" title="Xóa"><i class="fa fa-times"></i></a></p>-->
+                           <!--<p><strong>Màu sắc: </strong><a onclick="filter_clear('color')" title="Xóa"><i class="fa fa-times"></i></a></p>-->
+                           <!--<p><strong>Thương hiệu: </strong><a onclick="filter_clear('trademark')" title="Xóa"><i class="fa fa-times"></i></a></p>-->
+                           <!--<p><strong>Chất liệu: </strong><a onclick="filter_clear('material')" title="Xóa"><i class="fa fa-times"></i></a></p>-->
+                           <!--        <p><strong>Kiểu dáng: </strong><a onclick="filter_clear('style')" title="Xóa"><i class="fa fa-times"></i></a></p>-->
+                       </div>
+
+                       <div class="filter">
+                           <h4>Giá</h4>
+                           <ol>
+                               <li><a onclick="filter_add('price','0-50000')">0 ₫ - 50.000 ₫</a></li>
+                               <li><a onclick="filter_add('price','50000-100000')">50.000 ₫ - 100.000 ₫</a></li>
+                               <li><a onclick="filter_add('price','100000-500000')">100.000 ₫ - 500.000 ₫</a></li>
+                               <li><a onclick="filter_add('price','500000-1000000')">500.000 ₫ - 1.000.000 ₫</a></li>
+                               <li><a onclick="filter_add('price','1000000-')">1.000.000 ₫ - lớn hơn</a></li>
+                           </ol>
+                       </div>
+                       <!--    <div class="filter">
+            <h4>Kích cỡ</h4>
+            <ol>
+                            <li><a onclick="filter_add('size','')"></a></li>
+                        </ol>
+        </div>-->
+                       <!--    <div class="filter">
+            <h4>Màu sắc</h4>
+            <ol>
+                            <li><a onclick="filter_add('color','')"></a></li>
+                        </ol>
+        </div>-->
+                       <!--    <div class="filter">
+            <h4>Thương hiệu</h4>
+            <ol>
+                            <li><a onclick="filter_add('trademark','')"></a></li>
+                        </ol>
+        </div>-->
+                       <div class="filter">
+                           <h4>Xuất xứ</h4>
+                           <ol>
+                               <li><a onclick="filter_add('origin','25')">Mỹ</a></li>
+                               <li><a onclick="filter_add('origin','27')">Nhật Bản</a></li>
+                               <li><a onclick="filter_add('origin','24')">Việt Nam</a></li>
+                           </ol>
+                       </div>
+                       <!--    <div class="filter">
+            <h4>Chất liệu</h4>
+            <ol>
+                            <li><a onclick="filter_add('material','')"></a></li>
+                        </ol>
+        </div>-->
+                       <!--    <div class="filter">
+            <h4>Kiểu dáng</h4>
+            <ol>
+                            <li><a onclick="filter_add('style','')"></a></li>
+                        </ol>
+        </div>-->
+                   </div>
+               </div>
+               <div class="body">
+                   @RenderBody()
+               </div>
+           </main>
+            <div style="clear:both"></div>
+           
+
+            @*phần cuối trang *@
+
+            <footer>
+                <div class="footer-page">
+                    Địa chỉ: Tầng 5, Tòa nhà Hồng Hà Center, Số 25 Lý Thường Kiệt, Phường Phan Chu Trinh, Quận Hoàn Kiếm, TP Hà Nội.<br>
+                    Tel: 04.37931111 * Fax: 04. 37931155&nbsp; *&nbsp; Email: info@bshc.com.vn<br>
+                    Bản quyền thuộc Tổng công ty CP Bảo hiểm Sài Gòn – Hà Nội (BSH)
+                </div>
+            </footer>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @*Script Chạy nivoslider*@
+        <script type="text/javascript">
+            $(window).load(function () {
+                $('#slider').nivoSlider({
+                    controlNav: false,               // 1,2,3... navigation
+                    nextText: '',
+                    prevText: ''
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $('.Menu ul li ').hover(function () {
+                $(this).children('ul').stop(true, false, true).fadeToggle(300);
+            });
+        </script>
+        
+    </body>
+</html>
+    
+
+

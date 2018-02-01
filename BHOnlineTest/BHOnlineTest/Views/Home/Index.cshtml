@@ -1,0 +1,58 @@
+﻿@using BHOnlineTest.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<bh_sanpham>
+<link href="~/Content/homepage.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/layout_user.cshtml";
+}
+
+
+<div id="divBody" style="background:White;">
+@{int i = 0;}
+@foreach (var item in Model)
+{
+    i++;
+    <div class="SanPham">
+     <div id="AnhBia" class="SanPham"><img src="@Url.Content("~/Pic/"+item.Hinhanh)" /></div>
+      <div id="ThongTin" class="SanPham">
+            @*Nếu tên sách dài hơn 30 ký tự thì chúng ta sẽ cắt tên sách ra lấy từ ký tự 0 đến ký tự 35*@
+            @if (item.Ten.Length < 50)
+            {
+                <div id="TenSP" title="@item.Ten">@item.Ten</div>
+            }
+            else
+            {
+                <div id="TenSP" title="@item.Ten"> @item.Ten.Substring(0, 35) ...</div>
+            }
+            @*Dịch dấu chấm động đơn giá sử dụng string.Format("{0:0,0}", tham số)*@
+            <div id="DonGia" style="color:orange"><font color="Green">Giá:</font> @String.Format("{0:0,0}", item.Gia) VNĐ</div>
+        </div>
+        @*<div id="GioHang">
+            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSach = item.MaSach, @strURL = Request.Url.ToString() }))
+            {
+                <input type="submit" style="cursor:pointer" value="Mua hàng &#xf07a;" id="btnGioHang" class="btn btn-primary">
+            }
+        </div>*@
+    </div>
+    if (i % 4 == 0)
+    {
+        <div style="clear:both"></div>
+    }
+}
+
+</div>
+
+@* Tạo link liên kết các trang*@
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/ @Model.PageCount
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+<style>
+    .MenuTrang li {
+        display: inline;
+    }
+</style>
+
+
+
